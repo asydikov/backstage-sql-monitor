@@ -10,6 +10,7 @@ spec:
   lifecycle: production
   owner: group:sql-monitor
 ---
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: sql-monitor-web

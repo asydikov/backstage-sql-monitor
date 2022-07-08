@@ -14,4 +14,4 @@ spec:
   lifecycle: production
   owner: group:sql-monitor
   definition:
-    $text: https://github.com/asydikov/backstage-sql-monitor/blob/main/sql-monitor-api/swagger.json
+    $text: https://raw.githubusercontent.com/asydikov/backstage-sql-monitor/main/sql-monitor-api/swagger.json

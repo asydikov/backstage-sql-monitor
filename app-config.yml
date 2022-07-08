@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sql-monitor-base
+  description: Base Monitor
+  tags:
+    - executable
+spec:
+  type: executable
+  lifecycle: production
+  owner: group:sql-monitor
+---
+kind: Component
+metadata:
+  name: sql-monitor-web
+  description: SQl Monitor Web
+  tags:
+    - executable
+spec:
+  type: executable
+  lifecycle: production
+  owner: group:sql-monitor

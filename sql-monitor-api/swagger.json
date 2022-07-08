@@ -1,0 +1,3326 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "RedGate SQL Monitor API",
+    "version": "12.0.0.0"
+  },
+  "paths": {
+    "/api/eap/v1/alerts": {
+      "get": {
+        "tags": [
+          "Alerts"
+        ],
+        "parameters": [
+          {
+            "name": "start",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertDetailsDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertDetailsDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertDetailsDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/eap/v1/alertTypes": {
+      "get": {
+        "tags": [
+          "AlertTypes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertTypesDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertTypesDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertTypesDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/eap/v1/backups": {
+      "get": {
+        "tags": [
+          "Backups"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupsDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupsDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupsDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/eap/v1/diskUsage": {
+      "get": {
+        "tags": [
+          "DiskUsage"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiskUsagesDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiskUsagesDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiskUsagesDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/eap/v1/metrics": {
+      "get": {
+        "tags": [
+          "Metrics"
+        ],
+        "parameters": [
+          {
+            "name": "metricTypeId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "maxSampleCount",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricsDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricsDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricsDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/eap/v1/metricTypes": {
+      "get": {
+        "tags": [
+          "MetricTypes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricTypesDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricTypesDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricTypesDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/eap/v1/monitoredEntities": {
+      "get": {
+        "tags": [
+          "MonitoredEntities"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonitoredEntitiesDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonitoredEntitiesDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonitoredEntitiesDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccessReport": {
+        "type": "object",
+        "properties": {
+          "accessGranted": {
+            "type": "boolean"
+          },
+          "accessReason": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseMonitor": {
+            "$ref": "#/components/schemas/BaseMonitorDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccessRequest": {
+        "type": "object",
+        "properties": {
+          "entityType": {
+            "$ref": "#/components/schemas/EntityTypeDto"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "topLevelRequest": {
+            "$ref": "#/components/schemas/AccessRequest"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddAmazonRdsSqlServerCommandDto": {
+        "required": [
+          "endpoint",
+          "password",
+          "sqlServerConnectionProperties",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "endpoint": {
+            "pattern": "^(?<DbIdentifier>[\\w-]+)\\.[\\w-]+\\.((?<OtherRegions>[\\w-]+\\.rds\\.amazonaws\\.com)|(?<China>rds\\.[\\w-]+\\.amazonaws\\.com\\.cn))$",
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "sqlServerConnectionProperties": {
+            "$ref": "#/components/schemas/SqlServerConnectionPropertiesModel"
+          },
+          "groupId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "amazonApiCredentials": {
+            "$ref": "#/components/schemas/AmazonApiCredentialsDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddAzureManagedInstanceCommandDto": {
+        "required": [
+          "endpoint",
+          "password",
+          "sqlServerConnectionProperties",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "endpoint": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "sqlServerConnectionProperties": {
+            "$ref": "#/components/schemas/SqlServerConnectionPropertiesModel"
+          },
+          "groupId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddSqlServerByTypeModel": {
+        "type": "object",
+        "properties": {
+          "windowsMachineCredentials": {
+            "$ref": "#/components/schemas/WindowsMachineCredentialsModel"
+          },
+          "sqlServerCredentials": {
+            "$ref": "#/components/schemas/SqlServerCredentialsModel"
+          },
+          "sqlServerConnectionProperties": {
+            "$ref": "#/components/schemas/SqlServerConnectionPropertiesModel"
+          },
+          "windowsConnectionProperties": {
+            "$ref": "#/components/schemas/WindowsConnectionPropertiesModel"
+          },
+          "amazonApiCredentials": {
+            "$ref": "#/components/schemas/AmazonApiCredentialsDto"
+          },
+          "group": {
+            "type": "string",
+            "nullable": true
+          },
+          "groupId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "sqlServers": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/MonitoredEntityType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertDetailDto": {
+        "type": "object",
+        "properties": {
+          "monitoredEntity": {
+            "$ref": "#/components/schemas/EntityDto"
+          },
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceName": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/AlertStatus"
+          },
+          "severity": {
+            "$ref": "#/components/schemas/Severity"
+          },
+          "raisedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "alertType": {
+            "$ref": "#/components/schemas/AlertDetailTypeDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertDetailTypeDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertDetailsDto": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlertDetailDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertGroupDetails": {
+        "type": "object",
+        "properties": {
+          "alertType": {
+            "type": "string",
+            "nullable": true
+          },
+          "groupCir": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "alerts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlertModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertInboxSelectionDto": {
+        "type": "object",
+        "properties": {
+          "lastUpdate": {
+            "type": "string",
+            "nullable": true
+          },
+          "selectedGroupIds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupIdDto"
+            },
+            "nullable": true
+          },
+          "selectedAlertIds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QualifiedAlertIdDto"
+            },
+            "nullable": true
+          },
+          "filterSettings": {
+            "$ref": "#/components/schemas/FilterSettingsDto"
+          },
+          "channelInstanceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertModel": {
+        "type": "object",
+        "properties": {
+          "lastUpdated": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "worstSeverity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "objectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "objectType": {
+            "type": "string",
+            "nullable": true
+          },
+          "alertId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "read": {
+            "type": "boolean"
+          },
+          "lastComment": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertNotificationSettingsDto": {
+        "type": "object",
+        "properties": {
+          "emailNotificationOption": {
+            "$ref": "#/components/schemas/EmailNotificationOptionDto"
+          },
+          "emailAddresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "slackEnabled": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "snmpEnabled": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "webhookEnabled": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertReportTimeRangeType": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AlertSettingsDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/AlertStatusDto"
+          },
+          "comments": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "notificationSettings": {
+            "$ref": "#/components/schemas/AlertNotificationSettingsDto"
+          },
+          "specificSettings": {
+            "$ref": "#/components/schemas/ISpecificAlertSettingsDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertSeverityDto": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          -1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AlertStatus": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AlertStatusDto": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AlertSuppressionLevelDto": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AlertSuppressionTargetEditDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertSuppressionWindowEditDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "scheduleFrequency": {
+            "$ref": "#/components/schemas/ScheduleFrequencyDto"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "start": {
+            "$ref": "#/components/schemas/TimeSpan"
+          },
+          "duration": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/AlertSuppressionWindowStatusDto"
+          },
+          "alertSuppressionLevel": {
+            "$ref": "#/components/schemas/AlertSuppressionLevelDto"
+          },
+          "alertTypeGroupToSuppress": {
+            "$ref": "#/components/schemas/AlertTypeGroupToSuppressDto"
+          },
+          "monday": {
+            "type": "boolean"
+          },
+          "tuesday": {
+            "type": "boolean"
+          },
+          "wednesday": {
+            "type": "boolean"
+          },
+          "thursday": {
+            "type": "boolean"
+          },
+          "friday": {
+            "type": "boolean"
+          },
+          "saturday": {
+            "type": "boolean"
+          },
+          "sunday": {
+            "type": "boolean"
+          },
+          "scheduleSetPosition": {
+            "$ref": "#/components/schemas/ScheduleSetPositionDto"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "monthlyScheduleDayOfWeek": {
+            "$ref": "#/components/schemas/DayOfWeek"
+          },
+          "targets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlertSuppressionTargetEditDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertSuppressionWindowStatusDto": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AlertTypeDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertTypeGroupToSuppressDto": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AlertTypesDto": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlertTypeDto"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlertsFilterTimeRangeTypeDto": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AlertsFilterTimeWindowModesDto": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AmazonApiCredentialsDto": {
+        "required": [
+          "accessKey",
+          "secretKey"
+        ],
+        "type": "object",
+        "properties": {
+          "accessKey": {
+            "type": "string"
+          },
+          "secretKey": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AmazonApiCredentialsUpdateDto": {
+        "type": "object",
+        "properties": {
+          "accessKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "secretKey": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Annotation": {
+        "required": [
+          "instanceName",
+          "utcDate"
+        ],
+        "type": "object",
+        "properties": {
+          "instanceName": {
+            "type": "string"
+          },
+          "utcDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          },
+          "databaseName": {
+            "type": "string",
+            "nullable": true
+          },
+          "specificInfo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthenticationModeEnum": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AzureDetectionOptionsDto": {
+        "type": "object",
+        "properties": {
+          "subscriptionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "bearerToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BackupHistoriesDto": {
+        "type": "object",
+        "properties": {
+          "history": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BackupHistoryDto"
+            },
+            "nullable": true
+          },
+          "averageFullBackupInterval": {
+            "type": "number",
+            "format": "double"
+          },
+          "averageDiffBackupInterval": {
+            "type": "number",
+            "format": "double"
+          },
+          "averageLogBackupInterval": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BackupHistoryDto": {
+        "type": "object",
+        "properties": {
+          "serverOverviewUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "serverName": {
+            "type": "string",
+            "nullable": true
+          },
+          "serverAlias": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateRun": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "duration": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/BackupType"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "copyOnly": {
+            "type": "boolean"
+          },
+          "compressed": {
+            "type": "boolean"
+          },
+          "passwordProtected": {
+            "type": "boolean"
+          },
+          "encrypted": {
+            "type": "boolean"
+          },
+          "location": {
+            "type": "string",
+            "nullable": true
+          },
+          "nativeBackup": {
+            "type": "boolean"
+          },
+          "backedUpByRedgateSqlBackup": {
+            "type": "boolean"
+          },
+          "backedUpBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BackupType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "BackupsDto": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DatabaseBackupDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BackupsRowDto": {
+        "type": "object",
+        "properties": {
+          "servers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EstateServerDto"
+            },
+            "nullable": true
+          },
+          "group": {
+            "type": "string",
+            "nullable": true
+          },
+          "cluster": {
+            "type": "string",
+            "nullable": true
+          },
+          "database": {
+            "type": "string",
+            "nullable": true
+          },
+          "recoveryModel": {
+            "type": "string",
+            "nullable": true
+          },
+          "full": {
+            "$ref": "#/components/schemas/EstateBackupDto"
+          },
+          "log": {
+            "$ref": "#/components/schemas/EstateBackupDto"
+          },
+          "differential": {
+            "$ref": "#/components/schemas/EstateBackupDto"
+          },
+          "maxRpoMinutes": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "rpoBucket": {
+            "type": "string",
+            "nullable": true
+          },
+          "allRpo": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "isSystemDatabase": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "sortableDatabaseName": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "hasLogBackupWarning": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BaseMonitorDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClusterCredentialsModel": {
+        "type": "object",
+        "properties": {
+          "clusterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "windowsMachineCredentials": {
+            "$ref": "#/components/schemas/WindowsMachineCredentialsModel"
+          },
+          "sqlServerCredentials": {
+            "$ref": "#/components/schemas/SqlServerCredentialsModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CurrentActivityAutoRefreshChangedData": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "DatabaseBackupDto": {
+        "type": "object",
+        "properties": {
+          "monitoredEntity": {
+            "$ref": "#/components/schemas/EntityDto"
+          },
+          "instanceName": {
+            "type": "string",
+            "nullable": true
+          },
+          "groupName": {
+            "type": "string",
+            "nullable": true
+          },
+          "clusterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "databaseName": {
+            "type": "string",
+            "nullable": true
+          },
+          "recoveryModel": {
+            "type": "string",
+            "nullable": true
+          },
+          "latestFullBackup": {
+            "$ref": "#/components/schemas/LatestBackupDto"
+          },
+          "latestLogBackup": {
+            "$ref": "#/components/schemas/LatestBackupDto"
+          },
+          "latestDifferentialBackup": {
+            "$ref": "#/components/schemas/LatestBackupDto"
+          },
+          "maxRpoMinutes": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DatabaseBackupInfoDto": {
+        "type": "object",
+        "properties": {
+          "backups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BackupsRowDto"
+            },
+            "nullable": true
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "recoveryPointBuckets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "backupHistoryPurgeLifetime": {
+            "type": "string",
+            "nullable": true
+          },
+          "showShortPurgeSettingWarning": {
+            "type": "boolean"
+          },
+          "timeFormatString": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DatabaseFileUsageInfo": {
+        "type": "object",
+        "properties": {
+          "cluster": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          },
+          "database": {
+            "type": "string",
+            "nullable": true
+          },
+          "file": {
+            "type": "string",
+            "nullable": true
+          },
+          "used": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "capacity": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fileType": {
+            "type": "string",
+            "nullable": true
+          },
+          "filePath": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DatabaseFileUsageViewModel": {
+        "type": "object",
+        "properties": {
+          "diskInfos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VolumeUsageViewModel"
+            },
+            "nullable": true
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DatabaseFileUsageInfo"
+            },
+            "nullable": true
+          },
+          "graphData": {
+            "$ref": "#/components/schemas/GraphDataViewModel"
+          },
+          "csvVolumeName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DayOfWeek": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DeleteAmazonApiCredentialsRequest": {
+        "required": [
+          "endpoint"
+        ],
+        "type": "object",
+        "properties": {
+          "endpoint": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteSqlServerModel": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/MonitoredEntityType"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "deleteData": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DiscoveryOptionsDto": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "nullable": true
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "probeTcp": {
+            "type": "boolean"
+          },
+          "probeBrowser": {
+            "type": "boolean"
+          },
+          "tcpPort": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "searchBase": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DiskFilterInfoDto": {
+        "type": "object",
+        "properties": {
+          "filterText": {
+            "type": "string",
+            "nullable": true
+          },
+          "diskNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "groupNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DiskUsageDto": {
+        "type": "object",
+        "properties": {
+          "monitoredEntity": {
+            "$ref": "#/components/schemas/EntityDto"
+          },
+          "groupName": {
+            "type": "string",
+            "nullable": true
+          },
+          "clusterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "machineName": {
+            "type": "string",
+            "nullable": true
+          },
+          "diskName": {
+            "type": "string",
+            "nullable": true
+          },
+          "diskLabel": {
+            "type": "string",
+            "nullable": true
+          },
+          "diskUsed": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "diskSize": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "projectedSizeNow": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "projectedSizeInOneYear": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "projectedDateForFullCapacityUsed": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "sqlInstances": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SqlInstanceDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DiskUsagesDto": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DiskUsageDto"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Duplicate": {
+        "type": "object",
+        "properties": {
+          "entityType": {
+            "$ref": "#/components/schemas/EntityType"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseMonitors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DuplicateMonitoredEntitiesWarningDto": {
+        "type": "object",
+        "properties": {
+          "duplicates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Duplicate"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmailNotificationOptionDto": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "EntityDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EntityReferenceDto": {
+        "type": "object",
+        "properties": {
+          "reference": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EntityType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "EntityTypeDto": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "EstateBackupDto": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "totalSeconds": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "nativeBackup": {
+            "type": "boolean"
+          },
+          "backedUpByRedgateSqlBackup": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EstateServerDto": {
+        "type": "object",
+        "properties": {
+          "cir": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullyQualifiedName": {
+            "type": "string",
+            "nullable": true
+          },
+          "clusterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "instanceName": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias": {
+            "type": "string",
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagDto"
+            },
+            "nullable": true
+          },
+          "serverDisplayName": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExecutionResult": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "FetchStatistics": {
+        "type": "object",
+        "properties": {
+          "loadTimeInMilliseconds": {
+            "type": "number",
+            "format": "double"
+          },
+          "responseSizeInBytes": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FilterSettingsDto": {
+        "type": "object",
+        "properties": {
+          "timeRange": {
+            "$ref": "#/components/schemas/TimeRangeDto"
+          },
+          "includeStatus": {
+            "$ref": "#/components/schemas/IncludeStatusDto"
+          },
+          "includeAlertTypeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "selectedTags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GraphDataViewModel": {
+        "type": "object",
+        "properties": {
+          "allocatedSql": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "nullable": true
+          },
+          "other": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "nullable": true
+          },
+          "freeSpace": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "nullable": true
+          },
+          "usedSql": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GroupDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "baseMonitor": {
+            "$ref": "#/components/schemas/BaseMonitorDto"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "displayType": {
+            "$ref": "#/components/schemas/EntityTypeDto"
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GroupIdDto": {
+        "type": "object",
+        "properties": {
+          "groupCir": {
+            "type": "string",
+            "nullable": true
+          },
+          "alertType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "subType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastUpdate": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstUpdate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GroupOfAlertsDto": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupedAlertDto"
+            },
+            "nullable": true
+          },
+          "totalItemCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalGroupCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "asOfTicks": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "minTimestamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "maxTimestamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "hasMoreItems": {
+            "type": "boolean"
+          },
+          "firstAlertId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "maxAlertId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "timeRangeText": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GroupedAlertDto": {
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "$ref": "#/components/schemas/GroupIdDto"
+          },
+          "objectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "objectType": {
+            "type": "string",
+            "nullable": true
+          },
+          "entityType": {
+            "$ref": "#/components/schemas/EntityTypeDto"
+          },
+          "groupCir": {
+            "type": "string",
+            "nullable": true
+          },
+          "alertType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "alertSubType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxAlertId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "alertTypeDefinition": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstUpdate": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastUpdate": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lowSeverityCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mediumSeverityCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "highSeverityCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unread": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "severity": {
+            "$ref": "#/components/schemas/AlertSeverityDto"
+          },
+          "groupCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "baseMonitorName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastAlertUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "duration": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "raised": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastComment": {
+            "type": "string",
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HistoricVolumeUsageViewModel": {
+        "type": "object",
+        "properties": {
+          "showLimitedDataWarning": {
+            "type": "boolean"
+          },
+          "showShortPurgeSettingWarning": {
+            "type": "boolean"
+          },
+          "used": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "nullable": true
+          },
+          "totalProjectedSizeNow": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalProjectedSizeInOneYear": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalUsedSpace": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalCapacity": {
+            "type": "number",
+            "format": "double"
+          },
+          "storageDataPurgeLifeTime": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ISpecificAlertSettingsDto": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "IncludeStatusDto": {
+        "type": "object",
+        "properties": {
+          "severityHigh": {
+            "type": "boolean"
+          },
+          "severityMedium": {
+            "type": "boolean"
+          },
+          "severityLow": {
+            "type": "boolean"
+          },
+          "readYes": {
+            "type": "boolean"
+          },
+          "readNo": {
+            "type": "boolean"
+          },
+          "clearedYes": {
+            "type": "boolean"
+          },
+          "clearedNo": {
+            "type": "boolean"
+          },
+          "statusEvent": {
+            "type": "boolean"
+          },
+          "statusActive": {
+            "type": "boolean"
+          },
+          "statusEnded": {
+            "type": "boolean"
+          },
+          "commentYes": {
+            "type": "boolean"
+          },
+          "commentNo": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "JSendSuccess": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JToken": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/JToken"
+        }
+      },
+      "JobExecutionResult": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ExecutionResult"
+          },
+          "duration": {
+            "$ref": "#/components/schemas/TimeSpan"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "step": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JobExecutionViewModel": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "executionCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "successCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "failureCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextRun": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lastRun": {
+            "$ref": "#/components/schemas/JobExecutionResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "JobFilterInfo": {
+        "type": "object",
+        "properties": {
+          "numberOfDaysHistory": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "filterText": {
+            "type": "string",
+            "nullable": true
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JobHistoryViewModel": {
+        "type": "object",
+        "properties": {
+          "dateRun": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "duration": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "step": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "serverOverviewUrl": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JobsBucketViewModel": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "successCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "failureCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "JobsRowViewModel": {
+        "type": "object",
+        "properties": {
+          "baseMonitor": {
+            "type": "string",
+            "nullable": true
+          },
+          "cir": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "clusterName": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "group": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "job": {
+            "$ref": "#/components/schemas/JobExecutionViewModel"
+          },
+          "serverOverviewUrl": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagDto"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JobsViewModel": {
+        "type": "object",
+        "properties": {
+          "summary": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobsBucketViewModel"
+            },
+            "nullable": true
+          },
+          "jobs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobsRowViewModel"
+            },
+            "nullable": true
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "timeFormatString": {
+            "type": "string",
+            "nullable": true
+          },
+          "showShortPurgeSettingWarning": {
+            "type": "boolean"
+          },
+          "jobHistoryDataPurgeLifetime": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LatestBackupDto": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "duration": {
+            "type": "number",
+            "format": "double"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nativeBackup": {
+            "type": "boolean"
+          },
+          "backedUpByRedgateSqlBackup": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MetricDto": {
+        "type": "object",
+        "properties": {
+          "metricType": {
+            "$ref": "#/components/schemas/MetricTypeDisplayDto"
+          },
+          "targetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "monitoredEntity": {
+            "$ref": "#/components/schemas/EntityDto"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetricTimeSeriesDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MetricTimeSeriesDto": {
+        "type": "object",
+        "properties": {
+          "dateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "value": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MetricTypeDisplayDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MetricTypeDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MetricTypesDto": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetricTypeDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MetricsDto": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetricDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MonitoredEntitiesDto": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MonitoredEntityDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MonitoredEntityDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/EntityTypeDto"
+          },
+          "fullyQualifiedName": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MonitoredEntityType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "MonitoredObjectDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NetworkProtocolEnum": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "OptionToggledModel": {
+        "type": "object",
+        "properties": {
+          "option": {
+            "type": "string",
+            "nullable": true
+          },
+          "open": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrincipalDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseMonitor": {
+            "$ref": "#/components/schemas/BaseMonitorDto"
+          },
+          "principalRole": {
+            "$ref": "#/components/schemas/Role"
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupDto"
+            },
+            "nullable": true
+          },
+          "monitoredObjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MonitoredObjectDto"
+            },
+            "nullable": true
+          },
+          "all": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "QualifiedAlertIdDto": {
+        "type": "object",
+        "properties": {
+          "alertId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "baseMonitorName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryRecommendationsSummaryViewedFurPayloadDto": {
+        "type": "object",
+        "properties": {
+          "spillOccurred": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "columnsWithNoStatistics": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "spillToTempDb": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "wait": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "planAffectingConvert": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sortSpillDetails": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hashSpillDetails": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "exchangeSpillDetails": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "memoryGrantWarning": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "noJoinPredicate": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "spatialGuess": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unmatchedIndexes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fullUpdateForOnlineBuild": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "missingIndexes": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RdsDetectionOptionsDto": {
+        "type": "object",
+        "properties": {
+          "accessKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "secretKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReleaseTimelineViewModel": {
+        "type": "object",
+        "properties": {
+          "releases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReleaseViewModel"
+            },
+            "nullable": true
+          },
+          "latestUpdateDownloadUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReleaseViewModel": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "versionStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Role": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ScheduleFrequencyDto": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ScheduleSetPositionDto": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          -1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ServerTreeNodeDto": {
+        "type": "object",
+        "properties": {
+          "channelInstanceRef": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServerTreeNodeDto"
+            },
+            "nullable": true
+          },
+          "entityType": {
+            "$ref": "#/components/schemas/EntityTypeDto"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Severity": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          -1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SidebarExpandedModel": {
+        "type": "object",
+        "properties": {
+          "propertyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "openedBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SqlInstanceDto": {
+        "type": "object",
+        "properties": {
+          "instanceKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SqlInstanceViewModel": {
+        "type": "object",
+        "properties": {
+          "instanceKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias": {
+            "type": "string",
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SqlServerConnectionPropertiesModel": {
+        "type": "object",
+        "properties": {
+          "networkProtocol": {
+            "$ref": "#/components/schemas/NetworkProtocolEnum"
+          },
+          "portNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "networkPacketSize": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "connectionTimeout": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "executionTimeout": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "encryptConnection": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "trustServerCertificate": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SqlServerCredentialsModel": {
+        "type": "object",
+        "properties": {
+          "isSameAsWindowsCredentials": {
+            "type": "boolean"
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "authenticationMode": {
+            "$ref": "#/components/schemas/AuthenticationModeEnum"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SqlServerInstanceCredentialsModel": {
+        "type": "object",
+        "properties": {
+          "clusterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sqlServerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sqlServerCredentials": {
+            "$ref": "#/components/schemas/SqlServerCredentialsModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SuspendedStatus": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "TagDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimeRangeDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/AlertsFilterTimeRangeTypeDto"
+          },
+          "relativeMinutes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fromDateTime": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "toDateTime": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "timeWindowMode": {
+            "$ref": "#/components/schemas/AlertsFilterTimeWindowModesDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimeSpan": {
+        "type": "object",
+        "properties": {
+          "ticks": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "days": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "hours": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "milliseconds": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "minutes": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "seconds": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "totalDays": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalHours": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalMilliseconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalMinutes": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalSeconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAmazonRdsSqlServerRequest": {
+        "required": [
+          "endpoints",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "endpoints": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "amazonApiCredentials": {
+            "$ref": "#/components/schemas/AmazonApiCredentialsUpdateDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateTagOperationDto": {
+        "type": "object",
+        "properties": {
+          "entities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EntityReferenceDto"
+            },
+            "nullable": true
+          },
+          "tagsToAdd": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagDto"
+            },
+            "nullable": true
+          },
+          "tagsToRemove": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ValidationProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "VolumeUsageViewModel": {
+        "type": "object",
+        "properties": {
+          "cir": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentName": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "label": {
+            "type": "string",
+            "nullable": true
+          },
+          "group": {
+            "type": "string",
+            "nullable": true
+          },
+          "style": {
+            "type": "string",
+            "nullable": true
+          },
+          "objectIcon": {
+            "type": "string",
+            "nullable": true
+          },
+          "used": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "projectedSizeNow": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "projectedSizeInOneYear": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "projectedFullDateTicks": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "sqlInstances": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SqlInstanceViewModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VolumesViewModel": {
+        "type": "object",
+        "properties": {
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "volumes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VolumeUsageViewModel"
+            },
+            "nullable": true
+          },
+          "diskNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebhookIntegrationTypeDto": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "WebhookTestRequestCommandDto": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "integrationType": {
+            "$ref": "#/components/schemas/WebhookIntegrationTypeDto"
+          },
+          "template": {
+            "type": "string",
+            "nullable": true
+          },
+          "headers": {
+            "type": "string",
+            "nullable": true
+          },
+          "ignoreSslErrors": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WindowsConnectionPropertiesModel": {
+        "type": "object",
+        "properties": {
+          "wmiConnectionMethod": {
+            "$ref": "#/components/schemas/WmiConnectionMethod"
+          },
+          "autoDetectClusterName": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WindowsMachineCredentialsModel": {
+        "type": "object",
+        "properties": {
+          "isBaseMonitorAccount": {
+            "type": "boolean"
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WmiConnectionMethod": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      }
+    }
+  }
+}
